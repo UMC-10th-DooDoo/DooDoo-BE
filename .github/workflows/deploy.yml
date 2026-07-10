@@ -44,7 +44,11 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
+          envs: DB_PASSWORD
           script: |
             cd /home/ubuntu/doodoo
+            echo "DB_PASSWORD=${DB_PASSWORD}" > .env
             docker compose pull
             docker compose up -d --remove-orphans
+        env:
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
