@@ -2,6 +2,7 @@ package com.dooDoo.dooDoo.domain.user.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -26,6 +27,7 @@ public class User {
     @Column(name = "nickname", nullable = false)
     private String nickname;
 
+    @CreationTimestamp
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
 
