@@ -47,11 +47,17 @@ public class Todo {
     @Column(name = "priority")
     private Integer priority;
 
+    @Column(name = "completed_at")
+    private LocalDateTime completedAt;
+
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
+
+    @Column(name = "deleted_at")
+    private LocalDateTime deletedAt;
 
     @Builder
     public Todo(
@@ -86,7 +92,12 @@ public class Todo {
 
     public void updateCompletion(boolean completed) {
         this.completed = completed;
+        this.completedAt = completed ? LocalDateTime.now() : null;
         this.updatedAt = LocalDateTime.now();
+    }
+
+    public void delete() {
+        this.deletedAt = LocalDateTime.now();
     }
 
 }
