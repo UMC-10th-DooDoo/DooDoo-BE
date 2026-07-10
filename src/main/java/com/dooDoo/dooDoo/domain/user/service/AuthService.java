@@ -25,6 +25,7 @@ public class AuthService {
                 .loginId(req.getLoginId())
                 .password(req.getPassword())
                 .nickname(req.getNickname())
+                .createdAt(req.getCreatedAt())
                 .build();
         return userRepository.save(user);
     }

@@ -3,6 +3,8 @@ package com.dooDoo.dooDoo.domain.user.dto;
 import jakarta.validation.constraints.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 public class AuthDto {
 
     @Getter
@@ -18,6 +20,8 @@ public class AuthDto {
 
         @Size(min = 2, max = 50, message = "닉네임은 2~50자로 입력해주세요.")
         private String nickname;
+
+        private LocalDateTime createdAt;
     }
 
     @Getter
@@ -34,5 +38,6 @@ public class AuthDto {
         private Long userId;
         private String loginId;
         private String nickname;
+        private LocalDateTime createdAt;
     }
 }
